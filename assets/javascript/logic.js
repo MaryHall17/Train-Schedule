@@ -34,7 +34,7 @@ $(document).ready(function() {
 	console.log(destination);
 
 	//Set the variables in firebase to make sure we're linked
-		database.ref().set({
+		database.ref().push({
 			trainName: trainName,
 			destination: destination
 		});
