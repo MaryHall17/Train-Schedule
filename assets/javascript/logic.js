@@ -1,5 +1,5 @@
 // "Psuedo code":
-// Build arrays that store initial train information; create for loop that sends this array to the table
+// Utilize firebase to send initital train data to the html
 // Also store initial train info in fire base
 // Build function that grabs user input and sends it to array at the click of the submit button
 // Use moment.js to calculate train times
@@ -16,5 +16,33 @@
   };
   firebase.initializeApp(config);
 
-//This array stores our trainNames
-var trainNames = ["Thomas", "Generic Name", "Choo Choo Express", "Canadian Bacon", "The Polar Express"];
+//Assign the reference to the database
+var database = firebase.database();
+
+//Grab user-input with submit button to build train schedule
+$(document).ready(function() {
+	$(".btn-primary").on("click", function(event){
+	//Prevent form from submitting
+	event.preventDefault();
+
+	//Grab the input values of the train name and destination
+	var trainName = $("#trainName").val().trim();
+	var destination = $("#destination").val().trim();
+	
+	//Test in console
+	console.log(trainName);
+	console.log(destination);
+
+	//Set the variables in firebase to make sure we're linked
+		database.ref().set({
+			trainName: trainName,
+			destination: destination
+		});
+	});
+});
+
+
+//Use these inputs for moment.js function
+// var firstArrival = $("#firstArrival").val().trim();
+// var frequency = $("#frequency").val().trim();
+
