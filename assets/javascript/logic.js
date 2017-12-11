@@ -67,12 +67,12 @@ $(document).ready(function() {
 		var frequency = childSnapshot.val().frequency;
 
 		//First arrival formatted, subtracted 1 year to make sure it comes before current time
-		var firstArrivalFormatted = moment(firstArrival, "hh:mm").subtract(1, "years");
+		var firstArrivalFormatted = moment(firstArrival, "HH:mm").subtract(1, "years");
 		console.log(firstArrivalFormatted);
 		
 		//Current time
 		var currentTime = moment();
-		console.log("current time: " + moment(currentTime).format("hh:mm"));
+		console.log("current time: " + moment(currentTime).format("HH:mm"));
 
 		//Calculate the difference between the formatted first arrival and the current time. 
 		//Make sure calculated time is in minutes.
@@ -89,8 +89,10 @@ $(document).ready(function() {
 
 		//The next train
 		var nextTrain = moment().add(minutesTilArrival, "minutes");
-		console.log("Arrival time: " + moment(nextTrain).format("hh:mm"));
+		console.log("Arrival time: " + moment(nextTrain).format("HH:mm"));
 
+		//Send the corresponding data into the table
+		$("#trainTable > tbody").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + frequency + "</td><td>" + moment(nextTrain).format("HH:mm") + "</td><td>" + minutesTilArrival + "</td><td>" + "</td></tr>");
 	});
 });
 
