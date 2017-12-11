@@ -25,11 +25,19 @@ $(document).ready(function() {
 	//Prevent form from submitting
 	event.preventDefault();
 
-	//Grab the input values of the train name and destination
+	//Grab the input values of from the user-input 
 	var trainName = $("#trainName").val().trim();
 	var destination = $("#destination").val().trim();
 	var firstArrival = $("#firstArrival").val().trim();
 	var frequency = $("#frequency").val().trim();
+
+	//Create object to locally store user-input
+	var newTrain = {
+		name: trainName,
+		destination: destination,
+		firstArrival: firstArrival,
+		frequency: frequency
+	};
 	
 	//Test in console
 	console.log(trainName);
@@ -38,12 +46,7 @@ $(document).ready(function() {
 	console.log(frequency);
 
 	//Push the variables to firebase
-		database.ref().push({
-			trainName: trainName,
-			destination: destination,
-			firstArrival: firstArrival,
-			frequency: frequency
-		});
+		database.ref().push(newTrain);
 	});
 });
 
