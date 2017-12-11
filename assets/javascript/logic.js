@@ -54,10 +54,29 @@ $(document).ready(function() {
 	$("#firstArrival").val("");
 	$("#frequency").val("");
 	});
+
+// Create a Firebase event for adding trains to the database and sending the entry to the html
+	database.ref().on("child_added", function(childSnapshot, prevChildKey) {
+
+		console.log(childSnapshot.val());
+
+		//Store data into variables
+		var trainName = childSnapshot.val().name;
+		var destination = childSnapshot.val().destination;
+		var firstArrival = childSnapshot.val().firstArrival;
+		var frequency = childSnapshot.val().frequency;
+
+		//First arrival formatted, subtracted 1 year to make sure it comes before current time
+		var firstArrivalFormatted = moment(firstArrival, "hh:mm").subtract(1, "years");
+		console.log(firstArrivalFormatted);
+		
+		//Current time
+		var currentTime = moment();
+		console.log(currentTime);
+
+	});
 });
 
 
-//Use these inputs for moment.js function
-// var firstArrival = $("#firstArrival").val().trim();
-// var frequency = $("#frequency").val().trim();
+
 
