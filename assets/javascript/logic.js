@@ -45,8 +45,14 @@ $(document).ready(function() {
 	console.log(firstArrival);
 	console.log(frequency);
 
-	//Push the variables to firebase
+	//Push and store the variables to firebase
 		database.ref().push(newTrain);
+
+	//Clear user-input boxes
+	$("#trainName").val("");
+	$("#destination").val("");
+	$("#firstArrival").val("");
+	$("#frequency").val("");
 	});
 });
 
