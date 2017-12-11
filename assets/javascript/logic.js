@@ -28,15 +28,21 @@ $(document).ready(function() {
 	//Grab the input values of the train name and destination
 	var trainName = $("#trainName").val().trim();
 	var destination = $("#destination").val().trim();
+	var firstArrival = $("#firstArrival").val().trim();
+	var frequency = $("#frequency").val().trim();
 	
 	//Test in console
 	console.log(trainName);
 	console.log(destination);
+	console.log(firstArrival);
+	console.log(frequency);
 
-	//Set the variables in firebase to make sure we're linked
+	//Push the variables to firebase
 		database.ref().push({
 			trainName: trainName,
-			destination: destination
+			destination: destination,
+			firstArrival: firstArrival,
+			frequency: frequency
 		});
 	});
 });
