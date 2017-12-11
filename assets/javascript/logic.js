@@ -72,7 +72,24 @@ $(document).ready(function() {
 		
 		//Current time
 		var currentTime = moment();
-		console.log(currentTime);
+		console.log("current time: " + moment(currentTime).format("hh:mm"));
+
+		//Calculate the difference between the formatted first arrival and the current time. 
+		//Make sure calculated time is in minutes.
+		var difference = moment().diff(moment(firstArrivalFormatted), "minutes");
+		console.log("Time difference: " + difference); 
+
+		//Calculate remaining time between initial train arrival and the next one
+		var remainder = difference % frequency;
+		console.log(remainder);
+
+		//Calculate the minutes until the next train
+		var minutesTilArrival = frequency - remainder;
+		console.log("minutes until arrival: " + minutesTilArrival);
+
+		//The next train
+		var nextTrain = moment().add(minutesTilArrival, "minutes");
+		console.log("Arrival time: " + moment(nextTrain).format("hh:mm"));
 
 	});
 });
