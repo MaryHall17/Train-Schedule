@@ -21,7 +21,7 @@ var database = firebase.database();
 
 //Grab user-input with submit button to build train schedule
 $(document).ready(function() {
-	$(".btn-primary").on("click", function(event){
+	$("button").on("click", function(event){
 	//Prevent form from submitting
 	event.preventDefault();
 

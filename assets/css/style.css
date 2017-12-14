@@ -1,9 +1,22 @@
 .panel-heading {
-	background-color: blue;
+	background-color: purple;
 	color: white;
+}
+
+#schedule {
+	border: 2px solid purple;
+}
+
+#form {
+	border: 2px solid purple;
 }
 
 .jumbotron {
 	background-color: blue;
+	color: white;
+}
+
+button {
+	background-color: purple;
 	color: white;
 }
